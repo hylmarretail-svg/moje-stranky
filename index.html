@@ -1,817 +1,152 @@
-<!doctype html>
-<html lang="cs">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hylmar Retail Partners | Retail & FMCG Market Entry Partner</title>
-
-  <style>
-    :root {
-      --navy: #071423;
-      --navy-light: #0d2238;
-      --orange: #f47a00;
-      --orange-soft: #ff9a2f;
-      --white: #f5f1ea;
-      --muted: #c8c3ba;
-      --card: rgba(255, 255, 255, 0.06);
-      --border: rgba(244, 122, 0, 0.45);
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      background:
-        radial-gradient(circle at top left, rgba(244,122,0,0.12), transparent 35%),
-        linear-gradient(135deg, #020812 0%, var(--navy) 50%, #020812 100%);
-      color: var(--white);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      background: rgba(2, 8, 18, 0.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .nav {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 14px 22px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-    }
-
-    .brand img {
-      width: 46px;
-      height: 46px;
-      object-fit: contain;
-      border-radius: 8px;
-    }
-
-    .brand span {
-      font-size: 18px;
-    }
-
-    .brand strong {
-      color: var(--orange);
-      font-weight: normal;
-    }
-
-    .menu {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-    }
-
-    .menu a {
-      text-decoration: none;
-      color: var(--muted);
-      transition: color 0.2s;
-    }
-
-    .menu a:hover {
-      color: var(--orange-soft);
-    }
-
-    .lang-switch {
-      display: flex;
-      gap: 8px;
-    }
-
-    .lang-switch button {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid var(--border);
-      padding: 7px 10px;
-      border-radius: 999px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .lang-switch button.active {
-      background: var(--orange);
-      color: #111;
-    }
-
-    .hero {
-      min-height: 88vh;
-      display: grid;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid rgba(244,122,0,0.25);
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(90deg, rgba(2,8,18,0.94) 0%, rgba(2,8,18,0.78) 42%, rgba(2,8,18,0.34) 100%),
-        url("banner-en.png") center right / cover no-repeat;
-      opacity: 0.8;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 90px 22px;
-      width: 100%;
-    }
-
-    .eyebrow {
-      color: var(--orange);
-      font-family: Arial, sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 13px;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      max-width: 850px;
-      font-size: clamp(44px, 7vw, 86px);
-      line-height: 1.05;
-      font-weight: normal;
-      margin-bottom: 22px;
-      text-shadow: 0 6px 26px rgba(0,0,0,0.55);
-    }
-
-    h1 span,
-    h2 span,
-    .orange {
-      color: var(--orange);
-    }
-
-    .hero-subtitle {
-      max-width: 760px;
-      font-size: clamp(22px, 3vw, 36px);
-      line-height: 1.25;
-      margin-bottom: 18px;
-    }
-
-    .hero-text {
-      max-width: 660px;
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      margin-bottom: 34px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      padding: 14px 22px;
-      border-radius: 999px;
-      border: 1px solid var(--orange);
-      transition: transform 0.2s, background 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--orange);
-      color: #111;
-    }
-
-    .btn-secondary {
-      color: var(--white);
-      background: rgba(255,255,255,0.04);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    section {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 82px 22px;
-    }
-
-    .section-title {
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.1;
-      font-weight: normal;
-      margin-bottom: 18px;
-    }
-
-    .section-intro {
-      max-width: 820px;
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      margin-bottom: 34px;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .panel {
-      background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 30px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.28);
-    }
-
-    .panel.orange-border {
-      border-color: var(--border);
-    }
-
-    .panel p {
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      font-size: 17px;
-      margin-bottom: 14px;
-    }
-
-    .visual-card {
-      border-radius: 26px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #020812;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.35);
-    }
-
-    .visual-card img {
-      width: 100%;
-      display: block;
-    }
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 30px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-left: 3px solid var(--orange);
-      border-radius: 20px;
-      padding: 24px;
-      min-height: 175px;
-    }
-
-    .icon {
-      width: 46px;
-      height: 46px;
-      border: 1px solid var(--orange);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: var(--orange);
-      font-family: Arial, sans-serif;
-      font-weight: bold;
-      margin-bottom: 16px;
-    }
-
-    .card h3 {
-      font-size: 24px;
-      line-height: 1.2;
-      font-weight: normal;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      font-size: 15.5px;
-    }
-
-    .services-list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 26px;
-    }
-
-    .service-item {
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-      padding: 18px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.07);
-      font-family: Arial, sans-serif;
-    }
-
-    .service-item strong {
-      display: block;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-
-    .service-item p {
-      color: var(--muted);
-      font-size: 15px;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      background: var(--orange);
-      border-radius: 50%;
-      margin-top: 6px;
-      flex: 0 0 auto;
-    }
-
-    .quote {
-      margin-top: 34px;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 30px;
-      background:
-        radial-gradient(circle at bottom right, rgba(244,122,0,0.12), transparent 34%),
-        rgba(255,255,255,0.04);
-    }
-
-    .quote p {
-      font-size: clamp(24px, 3vw, 36px);
-      line-height: 1.25;
-      color: var(--white);
-    }
-
-    .quote span {
-      color: var(--orange);
-    }
-
-    .contact-box {
-      text-align: center;
-      background:
-        linear-gradient(135deg, rgba(244,122,0,0.16), rgba(255,255,255,0.04)),
-        rgba(255,255,255,0.04);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 46px 28px;
-    }
-
-    .contact-box h2 {
-      font-size: clamp(36px, 5vw, 60px);
-      font-weight: normal;
-      margin-bottom: 16px;
-    }
-
-    .contact-box p {
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      font-size: 18px;
-      margin-bottom: 24px;
-    }
-
-    .email {
-      display: inline-block;
-      color: var(--orange-soft);
-      font-size: clamp(22px, 4vw, 34px);
-      text-decoration: none;
-      border-bottom: 1px solid var(--orange);
-      padding-bottom: 4px;
-    }
-
-    footer {
-      text-align: center;
-      color: var(--muted);
-      font-family: Arial, sans-serif;
-      font-size: 14px;
-      padding: 34px 20px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-    }
-
-    [data-lang="en"] {
-      display: none;
-    }
-
-    body.english [data-lang="cs"] {
-      display: none;
-    }
-
-    body.english [data-lang="en"] {
-      display: initial;
-    }
-
-    body.english .hero::before {
-      background:
-        linear-gradient(90deg, rgba(2,8,18,0.94) 0%, rgba(2,8,18,0.78) 42%, rgba(2,8,18,0.34) 100%),
-        url("banner-en.png") center right / cover no-repeat;
-    }
-
-    body:not(.english) .hero::before {
-      background:
-        linear-gradient(90deg, rgba(2,8,18,0.94) 0%, rgba(2,8,18,0.78) 42%, rgba(2,8,18,0.34) 100%),
-        url("banner-cz.png") center right / cover no-repeat;
-    }
-
-    @media (max-width: 880px) {
-      .nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .menu {
-        flex-wrap: wrap;
-      }
-
-      .split,
-      .cards,
-      .services-list {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-      }
-
-      .hero-content {
-        padding: 80px 22px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hylmar Retail Partners | FMCG Consulting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .lang-cs { display: none; }
+        .font-serif { font-family: 'Georgia', serif; }
+    </style>
 </head>
+<body class="bg-[#f8f9fa] text-slate-900">
 
-<body>
-
-  <div class="topbar">
-    <nav class="nav">
-      <a class="brand" href="#home">
-        <img src="logo.png" alt="Hylmar Retail Partners logo">
-        <span><strong>Hylmar</strong> Retail Partners</span>
-      </a>
-
-      <div class="menu">
-        <a href="#about">
-          <span data-lang="cs">O nás</span>
-          <span data-lang="en">About</span>
-        </a>
-        <a href="#services">
-          <span data-lang="cs">Služby</span>
-          <span data-lang="en">Services</span>
-        </a>
-        <a href="#markets">
-          <span data-lang="cs">Trhy</span>
-          <span data-lang="en">Markets</span>
-        </a>
-        <a href="#contact">
-          <span data-lang="cs">Kontakt</span>
-          <span data-lang="en">Contact</span>
-        </a>
-
-        <div class="lang-switch">
-          <button id="btn-cs" class="active" onclick="setLanguage('cs')">CZ</button>
-          <button id="btn-en" onclick="setLanguage('en')">EN</button>
+    <nav class="bg-white border-b sticky top-0 z-50 px-6 py-4 flex justify-between items-center shadow-sm">
+        <div class="text-2xl font-bold tracking-tighter text-slate-800">
+            HYLMAR <span class="font-light text-blue-800">RETAIL PARTNERS</span>
         </div>
-      </div>
+        <div class="flex items-center gap-6">
+            <button onclick="switchLang()" id="langBtn" class="text-sm font-bold border-2 border-slate-800 px-3 py-1 rounded hover:bg-slate-800 hover:text-white transition">
+                CZ / SK
+            </button>
+            <a href="#contact" class="hidden md:block bg-blue-800 text-white px-6 py-2 rounded font-medium hover:bg-blue-900 transition">
+                <span class="lang-en">Get in Touch</span>
+                <span class="lang-cs">Kontaktujte nás</span>
+            </a>
+        </div>
     </nav>
-  </div>
 
-  <header class="hero" id="home">
-    <div class="hero-content">
-      <div class="eyebrow">
-        <span data-lang="cs">Retail • FMCG • Market Entry</span>
-        <span data-lang="en">Retail • FMCG • Market Entry</span>
-      </div>
-
-      <h1>
-        <span>Hylmar</span> Retail Partners
-      </h1>
-
-      <div class="hero-subtitle">
-        <span data-lang="cs">Partner pro vstup značek a výrobců na český a slovenský trh.</span>
-        <span data-lang="en">Retail & FMCG market entry partner for Czechia, Slovakia and Central Europe.</span>
-      </div>
-
-      <p class="hero-text">
-        <span data-lang="cs">
-          Pomáháme převést dobrý produkt do obchodně srozumitelné nabídky pro retail, distribuci,
-          e-commerce, convenience, pharmacy a další prodejní kanály.
-        </span>
-        <span data-lang="en">
-          We help international FMCG, food, health, convenience and retail brands enter the Czech
-          and Slovak markets with clear commercial strategy and practical execution support.
-        </span>
-      </p>
-
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="#contact">
-          <span data-lang="cs">Kontaktovat</span>
-          <span data-lang="en">Get in touch</span>
-        </a>
-        <a class="btn btn-secondary" href="#services">
-          <span data-lang="cs">Jak pomáháme</span>
-          <span data-lang="en">How we can help</span>
-        </a>
-      </div>
-    </div>
-  </header>
-
-  <section id="about">
-    <div class="split">
-      <div>
-        <h2 class="section-title">
-          <span data-lang="cs"><span>Praktický</span> retail partner pro výrobce a značky.</span>
-          <span data-lang="en">A <span>new professional chapter</span> in retail market entry.</span>
-        </h2>
-
-        <p class="section-intro">
-          <span data-lang="cs">
-            Hylmar Retail Partners staví na více než 20 letech zkušeností v retailu, nákupu,
-            category managementu a obchodním leadershipu.
-          </span>
-          <span data-lang="en">
-            After more than 20 years in retail, buying, category management and commercial leadership,
-            Hylmar Retail Partners was founded to support brands entering Czechia, Slovakia and Central Europe.
-          </span>
-        </p>
-
-        <div class="panel orange-border">
-          <p>
-            <span data-lang="cs">
-              Naším cílem je pomoci malým a středním výrobcům i zahraničním značkám připravit produkt,
-              cenu, argumentaci a obchodní model tak, aby dával smysl pro retailery, distributory a koncové zákazníky.
-            </span>
-            <span data-lang="en">
-              Our role is to turn a good product into a commercially understandable retail offer:
-              clear category logic, pricing, margin setup, channel strategy and a convincing pitch for local partners.
-            </span>
-          </p>
-
-          <p>
-            <span data-lang="cs">
-              Zaměřujeme se na konkrétní obchodní výsledek: přístup na trh, lepší připravenost na jednání
-              a silnější šanci uspět v distribuci.
-            </span>
-            <span data-lang="en">
-              We focus on practical commercial outcomes: market access, stronger preparation for negotiations
-              and better chances to build long-term distribution and retail partnerships.
-            </span>
-          </p>
+    <header class="relative bg-slate-900 py-24 md:py-32 px-6">
+        <div class="max-w-5xl mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-serif font-bold text-white mb-6 leading-tight">
+                <span class="lang-en">Your Gateway to the <br><span class="text-blue-400">Czech & Slovak</span> FMCG Market</span>
+                <span class="lang-cs">Váš klíč k <br><span class="text-blue-400">českému a slovenskému</span> FMCG trhu</span>
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-10 leading-relaxed">
+                <span class="lang-en">Strategic market entry, distribution networking, and local regulatory expertise for global retail brands.</span>
+                <span class="lang-cs">Strategický vstup na trh, distribuční sítě a expertní znalost lokální legislativy pro globální retailové značky.</span>
+            </p>
         </div>
-      </div>
+    </header>
 
-      <div class="visual-card">
-        <img src="banner-en.png" alt="Hylmar Retail Partners market entry banner">
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
-    <h2 class="section-title">
-      <span data-lang="cs">Jak <span>pomáháme</span></span>
-      <span data-lang="en">How we <span>can help</span></span>
-    </h2>
-
-    <p class="section-intro">
-      <span data-lang="cs">
-        Pomáháme značkám a výrobcům připravit se na obchodní jednání, nastavit nabídku
-        a najít správnou cestu k retailovým a distribučním partnerům.
-      </span>
-      <span data-lang="en">
-        We support brands with market entry assessment, category and channel strategy,
-        pricing, retail pitch preparation and partner search.
-      </span>
-    </p>
-
-    <div class="services-list">
-      <div class="service-item">
-        <div class="dot"></div>
-        <div>
-          <strong>
-            <span data-lang="cs">Obchodní příprava</span>
-            <span data-lang="en">Market entry assessment</span>
-          </strong>
-          <p>
-            <span data-lang="cs">Analýza produktu, sortimentu, ceny, marže a obchodní argumentace.</span>
-            <span data-lang="en">Assessment of product potential, category fit, pricing logic and commercial readiness.</span>
-          </p>
+    <section class="py-20 px-6 max-w-6xl mx-auto">
+        <div class="grid md:grid-cols-3 gap-12">
+            <div class="space-y-4">
+                <div class="w-12 h-1 bg-blue-700"></div>
+                <h3 class="text-xl font-bold uppercase tracking-wide">
+                    <span class="lang-en">Market Entry</span>
+                    <span class="lang-cs">Vstup na trh</span>
+                </h3>
+                <p class="text-slate-600">
+                    <span class="lang-en">Full-scale launch strategies tailored to the unique consumer habits of Central Europe.</span>
+                    <span class="lang-cs">Kompletní strategie uvedení na trh přizpůsobené nákupním zvyklostem ve střední Evropě.</span>
+                </p>
+            </div>
+            <div class="space-y-4">
+                <div class="w-12 h-1 bg-blue-700"></div>
+                <h3 class="text-xl font-bold uppercase tracking-wide">
+                    <span class="lang-en">Retail Relations</span>
+                    <span class="lang-cs">Retailové vztahy</span>
+                </h3>
+                <p class="text-slate-600">
+                    <span class="lang-en">Direct access to category managers at major chains (Albert, Tesco, Lidl, Kaufland, Billa).</span>
+                    <span class="lang-cs">Přímé napojení na nákupčí v klíčových řetězcích (Albert, Tesco, Lidl, Kaufland, Billa).</span>
+                </p>
+            </div>
+            <div class="space-y-4">
+                <div class="w-12 h-1 bg-blue-700"></div>
+                <h3 class="text-xl font-bold uppercase tracking-wide">
+                    <span class="lang-en">Compliance</span>
+                    <span class="lang-cs">Legislativa</span>
+                </h3>
+                <p class="text-slate-600">
+                    <span class="lang-en">Navigating complex food & non-food regulations and local labeling requirements.</span>
+                    <span class="lang-cs">Zajištění souladu s předpisy pro potravinářské i nepotravinářské zboží a lokální značení.</span>
+                </p>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="service-item">
-        <div class="dot"></div>
-        <div>
-          <strong>
-            <span data-lang="cs">Kategorie a kanály</span>
-            <span data-lang="en">Category & channel strategy</span>
-          </strong>
-          <p>
-            <span data-lang="cs">Retail, distribuce, e-commerce, convenience, pharmacy a discount.</span>
-            <span data-lang="en">Retail, distribution, e-commerce, convenience, pharmacy and discount channels.</span>
-          </p>
+    <section class="bg-white py-20 px-6 border-y">
+        <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <div class="md:w-1/2">
+                <h2 class="text-3xl font-serif font-bold mb-6">
+                    <span class="lang-en">Local Insight. Global Standards.</span>
+                    <span class="lang-cs">Lokální znalost. Globální standardy.</span>
+                </h2>
+                <p class="text-slate-700 leading-relaxed mb-6">
+                    <span class="lang-en">At Hylmar Retail Partners, we don't just consult—we execute. Our mission is to bridge the gap between high-potential brands and the 15 million consumers in the Czech Republic and Slovakia.</span>
+                    <span class="lang-cs">V Hylmar Retail Partners nejsme jen poradci – jsme vaši partneři při realizaci. Naším posláním je propojit ambiciózní značky s 15 miliony spotřebitelů v Česku a na Slovensku.</span>
+                </p>
+            </div>
+            <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                <div class="bg-slate-50 p-6 text-center rounded">
+                    <div class="text-3xl font-bold text-blue-800 mb-1">15M+</div>
+                    <div class="text-xs uppercase font-bold text-slate-500 tracking-widest">
+                        <span class="lang-en">Consumers</span><span class="lang-cs">Spotřebitelů</span>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-6 text-center rounded">
+                    <div class="text-3xl font-bold text-blue-800 mb-1">2</div>
+                    <div class="text-xs uppercase font-bold text-slate-500 tracking-widest">
+                        <span class="lang-en">Key Markets</span><span class="lang-cs">Klíčové trhy</span>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="service-item">
-        <div class="dot"></div>
-        <div>
-          <strong>
-            <span data-lang="cs">Pricing a maržový model</span>
-            <span data-lang="en">Pricing and margin setup</span>
-          </strong>
-          <p>
-            <span data-lang="cs">Nastavení ceny a obchodních podmínek tak, aby nabídka dávala smysl trhu.</span>
-            <span data-lang="en">Structuring pricing and margins to make the offer commercially viable.</span>
-          </p>
+    <section id="contact" class="py-20 px-6 max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">
+                <span class="lang-en">Schedule a Consultation</span>
+                <span class="lang-cs">Domluvte si konzultaci</span>
+            </h2>
         </div>
-      </div>
+        <form class="grid md:grid-cols-2 gap-6 bg-white p-8 rounded-lg shadow-lg border">
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Name / Jméno</label>
+                <input type="text" class="w-full border-gray-300 rounded p-3 bg-slate-50 border focus:ring-2 focus:ring-blue-800 outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-bold text-slate-700 mb-2">Email</label>
+                <input type="email" class="w-full border-gray-300 rounded p-3 bg-slate-50 border focus:ring-2 focus:ring-blue-800 outline-none">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-sm font-bold text-slate-700 mb-2">Inquiry / Dotaz</label>
+                <textarea class="w-full border-gray-300 rounded p-3 bg-slate-50 border h-32 focus:ring-2 focus:ring-blue-800 outline-none"></textarea>
+            </div>
+            <button class="md:col-span-2 bg-slate-800 text-white font-bold py-4 rounded hover:bg-slate-900 transition uppercase tracking-widest">
+                <span class="lang-en">Send Message</span>
+                <span class="lang-cs">Odeslat zprávu</span>
+            </button>
+        </form>
+    </section>
 
-      <div class="service-item">
-        <div class="dot"></div>
-        <div>
-          <strong>
-            <span data-lang="cs">Vyhledání partnerů</span>
-            <span data-lang="en">Distributor and retail partner search</span>
-          </strong>
-          <p>
-            <span data-lang="cs">Identifikace relevantních distributorů, retail partnerů a rozhodovacích kontaktů.</span>
-            <span data-lang="en">Identification of relevant distributors, retailers and local decision makers.</span>
-          </p>
-        </div>
-      </div>
+    <footer class="bg-slate-900 text-slate-500 py-12 px-6 text-center">
+        <p class="font-bold text-white mb-2 italic">HYLMAR RETAIL PARTNERS</p>
+        <p class="text-sm">Prague &middot; Bratislava &middot; London</p>
+        <p class="mt-8 text-xs opacity-50">&copy; 2026 Hylmar Retail Partners. All rights reserved.</p>
+    </footer>
 
-      <div class="service-item">
-        <div class="dot"></div>
-        <div>
-          <strong>
-            <span data-lang="cs">Příprava na jednání</span>
-            <span data-lang="en">Retail pitch preparation</span>
-          </strong>
-          <p>
-            <span data-lang="cs">Příprava prezentace, obchodních argumentů a struktury jednání.</span>
-            <span data-lang="en">Preparation of retail pitch, commercial arguments and negotiation structure.</span>
-          </p>
-        </div>
-      </div>
-
-      <div class="service-item">
-        <div class="dot"></div>
-        <div>
-          <strong>
-            <span data-lang="cs">Business development</span>
-            <span data-lang="en">Business development support</span>
-          </strong>
-          <p>
-            <span data-lang="cs">Praktická podpora růstu distribuce a dlouhodobé spolupráce s partnery.</span>
-            <span data-lang="en">Practical support for distribution growth and long-term business partnerships.</span>
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="quote">
-      <p>
-        <span data-lang="cs">
-          „Pomáháme převést dobrý produkt do nabídky, které rozumí retail, distributor i zákazník.“
-        </span>
-        <span data-lang="en">
-          “We look forward to connecting with brands, exporters, distributors and retail partners interested in
-          <span>Czechia, Slovakia and Central Europe.</span>”
-        </span>
-      </p>
-    </div>
-  </section>
-
-  <section id="markets">
-    <h2 class="section-title">
-      <span data-lang="cs">Trhy a <span>kanály</span></span>
-      <span data-lang="en">Markets and <span>channels</span></span>
-    </h2>
-
-    <p class="section-intro">
-      <span data-lang="cs">
-        Specializujeme se na Českou republiku, Slovensko a širší region střední Evropy.
-        Zaměřujeme se na praktické propojení značek s obchodní realitou lokálních trhů.
-      </span>
-      <span data-lang="en">
-        We specialize in Czechia, Slovakia and Central Europe, helping brands translate
-        their product potential into locally relevant retail and distribution opportunities.
-      </span>
-    </p>
-
-    <div class="cards">
-      <div class="card">
-        <div class="icon">01</div>
-        <h3>
-          <span data-lang="cs">Lokální znalost</span>
-          <span data-lang="en">Local expertise</span>
-        </h3>
-        <p>
-          <span data-lang="cs">Znalost trhu, kategorií, retail prostředí a obchodních očekávání.</span>
-          <span data-lang="en">Local market knowledge, category understanding and retail expectations.</span>
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="icon">02</div>
-        <h3>
-          <span data-lang="cs">Přístup na trh</span>
-          <span data-lang="en">Market access</span>
-        </h3>
-        <p>
-          <span data-lang="cs">Podpora při hledání cesty k retailerům, distributorům a partnerům.</span>
-          <span data-lang="en">Support in finding access to retailers, distributors and business partners.</span>
-        </p>
-      </div>
-
-      <div class="card">
-        <div class="icon">03</div>
-        <h3>
-          <span data-lang="cs">Obchodní dopad</span>
-          <span data-lang="en">Commercial impact</span>
-        </h3>
-        <p>
-          <span data-lang="cs">Důraz na reálnou prodejnost, marži, argumentaci a dlouhodobou spolupráci.</span>
-          <span data-lang="en">Focus on sales relevance, margin logic, negotiation arguments and long-term cooperation.</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="contact-box">
-      <h2>
-        <span data-lang="cs">Pojďme se <span>spojit</span></span>
-        <span data-lang="en">Let’s <span>connect</span></span>
-      </h2>
-
-      <p>
-        <span data-lang="cs">
-          Máte produkt, značku nebo obchodní příležitost pro český či slovenský trh?
-        </span>
-        <span data-lang="en">
-          Do you have a brand, product or retail opportunity for Czechia, Slovakia or Central Europe?
-        </span>
-      </p>
-
-      <a class="email" href="mailto:hylmar.retail@gmail.com">hylmar.retail@gmail.com</a>
-    </div>
-  </section>
-
-  <footer>
-    © 2026 Hylmar Retail Partners • Market Entry • Retail • FMCG
-  </footer>
-
-  <script>
-    function setLanguage(language) {
-      const body = document.body;
-      const csButton = document.getElementById("btn-cs");
-      const enButton = document.getElementById("btn-en");
-
-      if (language === "en") {
-        body.classList.add("english");
-        csButton.classList.remove("active");
-        enButton.classList.add("active");
-        document.documentElement.lang = "en";
-      } else {
-        body.classList.remove("english");
-        enButton.classList.remove("active");
-        csButton.classList.add("active");
-        document.documentElement.lang = "cs";
-      }
-    }
-  </script>
-
+    <script>
+        function switchLang() {
+            const isEn = document.querySelectorAll('.lang-en')[0].style.display !== 'none';
+            document.querySelectorAll('.lang-en').forEach(el => el.style.display = isEn ? 'none' : 'inline');
+            document.querySelectorAll('.lang-cs').forEach(el => el.style.display = isEn ? 'inline' : 'none');
+            document.getElementById('langBtn').innerText = isEn ? 'EN' : 'CZ / SK';
+        }
+    </script>
 </body>
 </html>
