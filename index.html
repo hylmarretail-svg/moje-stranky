@@ -30,9 +30,24 @@
 
     body {
       font-family: Georgia, "Times New Roman", serif;
-      background: linear-gradient(135deg, #020812 0%, #071423 48%, #020812 100%);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(244,122,0,0.08), transparent 26%),
+        radial-gradient(circle at 88% 18%, rgba(255,255,255,0.035), transparent 24%),
+        linear-gradient(135deg, #020812 0%, #071423 52%, #020812 100%);
       color: var(--white);
       line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.45), transparent 65%);
     }
 
     a {
@@ -68,8 +83,8 @@
     }
 
     .brand img {
-      width: 48px;
-      height: 48px;
+      width: 46px;
+      height: 46px;
       object-fit: cover;
       border-radius: 10px;
       border: 1px solid rgba(244,122,0,0.45);
@@ -126,13 +141,10 @@
     }
 
     .hero {
-      min-height: 82vh;
+      min-height: 78vh;
       display: grid;
       align-items: center;
       border-bottom: 1px solid rgba(244,122,0,0.22);
-      background:
-        radial-gradient(circle at 85% 20%, rgba(244,122,0,0.12), transparent 28%),
-        linear-gradient(135deg, #020812 0%, #071423 58%, #0d2238 100%);
     }
 
     .hero-inner {
@@ -141,21 +153,9 @@
       padding: 82px 22px;
       width: 100%;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 44px;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 54px;
       align-items: center;
-    }
-
-    .hero-logo {
-      margin-bottom: 28px;
-    }
-
-    .hero-logo img {
-      width: min(340px, 78vw);
-      border-radius: 22px;
-      border: 1px solid rgba(244,122,0,0.35);
-      box-shadow: 0 26px 80px rgba(0,0,0,0.35);
-      display: block;
     }
 
     .eyebrow {
@@ -168,12 +168,12 @@
     }
 
     h1 {
-      max-width: 900px;
-      font-size: clamp(44px, 7vw, 82px);
-      line-height: 1.05;
+      max-width: 760px;
+      font-size: clamp(38px, 5.2vw, 62px);
+      line-height: 1.08;
       font-weight: normal;
-      margin-bottom: 22px;
-      text-shadow: 0 6px 26px rgba(0,0,0,0.42);
+      margin-bottom: 18px;
+      text-shadow: 0 6px 26px rgba(0,0,0,0.38);
     }
 
     h1 span,
@@ -194,26 +194,13 @@
       color: var(--muted);
       font-family: Arial, sans-serif;
       font-size: 18px;
-      margin-bottom: 34px;
+      margin-bottom: 32px;
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
-    }
-
-    .hero-visual {
-      border-radius: 28px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #020812;
-      box-shadow: 0 30px 90px rgba(0,0,0,0.38);
-    }
-
-    .hero-visual img {
-      width: 100%;
-      display: block;
     }
 
     .btn {
@@ -241,14 +228,84 @@
       transform: translateY(-2px);
     }
 
+    .hero-card {
+      position: relative;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.025));
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: 0 30px 90px rgba(0,0,0,0.32);
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      width: 210px;
+      height: 210px;
+      right: -70px;
+      top: -70px;
+      border-radius: 50%;
+      background: rgba(244,122,0,0.10);
+    }
+
+    .hero-card img {
+      width: 190px;
+      max-width: 70%;
+      border-radius: 18px;
+      border: 1px solid rgba(244,122,0,0.35);
+      display: block;
+      margin-bottom: 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-card h3 {
+      position: relative;
+      z-index: 1;
+      font-size: 30px;
+      line-height: 1.2;
+      font-weight: normal;
+      margin-bottom: 16px;
+    }
+
+    .hero-card p {
+      position: relative;
+      z-index: 1;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 16.5px;
+      margin-bottom: 12px;
+    }
+
+    .pill-row {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+
+    .pill {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: var(--white);
+      border: 1px solid rgba(244,122,0,0.36);
+      background: rgba(244,122,0,0.08);
+      padding: 8px 11px;
+      border-radius: 999px;
+    }
+
     section {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 82px 22px;
+      padding: 78px 22px;
     }
 
     .section-title {
-      font-size: clamp(34px, 5vw, 58px);
+      font-size: clamp(34px, 5vw, 56px);
       line-height: 1.1;
       font-weight: normal;
       margin-bottom: 18px;
@@ -264,9 +321,9 @@
 
     .split {
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
-      gap: 32px;
-      align-items: center;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
     }
 
     .panel {
@@ -274,7 +331,7 @@
       border: 1px solid rgba(255,255,255,0.08);
       border-radius: 24px;
       padding: 30px;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.22);
+      box-shadow: 0 24px 80px rgba(0,0,0,0.20);
     }
 
     .panel.orange-border {
@@ -288,17 +345,28 @@
       margin-bottom: 14px;
     }
 
-    .visual-card {
-      border-radius: 26px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: #020812;
-      box-shadow: 0 24px 80px rgba(0,0,0,0.3);
+    .highlight-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
     }
 
-    .visual-card img {
-      width: 100%;
-      display: block;
+    .highlight-item {
+      display: flex;
+      gap: 12px;
+      color: var(--muted);
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+    }
+
+    .highlight-item::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      background: var(--orange);
+      border-radius: 50%;
+      margin-top: 8px;
+      flex: 0 0 auto;
     }
 
     .services-list {
@@ -312,7 +380,7 @@
       display: flex;
       gap: 14px;
       align-items: flex-start;
-      padding: 18px;
+      padding: 20px;
       border-radius: 18px;
       background: rgba(255,255,255,0.045);
       border: 1px solid rgba(255,255,255,0.07);
@@ -323,6 +391,7 @@
       display: block;
       color: var(--white);
       margin-bottom: 4px;
+      font-size: 16px;
     }
 
     .service-item p {
@@ -337,6 +406,23 @@
       border-radius: 50%;
       margin-top: 6px;
       flex: 0 0 auto;
+    }
+
+    .channels {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .channel {
+      border: 1px solid rgba(255,255,255,0.10);
+      border-left: 3px solid var(--orange);
+      border-radius: 14px;
+      padding: 13px 16px;
+      background: rgba(255,255,255,0.045);
+      font-family: Arial, sans-serif;
+      color: var(--muted);
     }
 
     .cards {
@@ -381,23 +467,6 @@
       font-size: 15.5px;
     }
 
-    .image-strip {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 22px 82px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-    }
-
-    .image-strip img {
-      width: 100%;
-      display: block;
-      border-radius: 24px;
-      border: 1px solid var(--border);
-      box-shadow: 0 24px 80px rgba(0,0,0,0.3);
-    }
-
     .quote {
       margin-top: 34px;
       border: 1px solid var(--border);
@@ -407,7 +476,7 @@
     }
 
     .quote p {
-      font-size: clamp(24px, 3vw, 36px);
+      font-size: clamp(24px, 3vw, 34px);
       line-height: 1.25;
       color: var(--white);
     }
@@ -484,8 +553,7 @@
       .hero-inner,
       .split,
       .services-list,
-      .cards,
-      .image-strip {
+      .cards {
         grid-template-columns: 1fr;
       }
 
@@ -494,10 +562,10 @@
       }
 
       .hero-inner {
-        padding: 72px 22px;
+        padding: 70px 22px;
       }
 
-      .hero-visual {
+      .hero-card {
         order: -1;
       }
 
@@ -549,34 +617,30 @@
   <header class="hero" id="home">
     <div class="hero-inner">
       <div class="hero-copy">
-        <div class="hero-logo">
-          <img src="logo.png" alt="Hylmar Retail Partners logo">
-        </div>
-
         <div class="eyebrow">
-          <span data-lang="cs">Retail • FMCG • Market Entry</span>
-          <span data-lang="en">Retail • FMCG • Market Entry</span>
+          <span data-lang="cs">Česko & Slovensko • Retail • Distribuce • E-commerce</span>
+          <span data-lang="en">Czechia & Slovakia • Retail • Distribution • E-commerce</span>
         </div>
 
         <h1><span>Hylmar</span> Retail Partners</h1>
 
         <div class="hero-subtitle">
           <span data-lang="cs">
-            Partner pro malé a střední výrobce a značky vstupující do retailu.
+            Partner pro malé a střední výrobce.
           </span>
           <span data-lang="en">
-            Retail & FMCG Market Entry Partner for Czechia, Slovakia and Central Europe.
+            Retail & FMCG Market Entry Partner.
           </span>
         </div>
 
         <p class="hero-text">
           <span data-lang="cs">
             Pomáháme převést dobrý produkt do obchodně srozumitelné nabídky pro retail,
-            distribuci, e-commerce, convenience, pharmacy a další prodejní kanály.
+            distributory a lokální obchodní partnery v Česku a na Slovensku.
           </span>
           <span data-lang="en">
-            We help international FMCG, food, health, convenience and retail brands enter
-            the Czech and Slovak markets with clear commercial preparation and practical support.
+            We help brands, exporters and producers turn product potential into a clear commercial
+            offer for retail, distributors and local business partners in Czechia and Slovakia.
           </span>
         </p>
 
@@ -593,64 +657,83 @@
         </div>
       </div>
 
-      <div class="hero-visual">
-        <img src="banner-cz.png" alt="Hylmar Retail Partners Czech banner" data-lang="cs">
-        <img src="banner-en.png" alt="Hylmar Retail Partners English banner" data-lang="en">
-      </div>
+      <aside class="hero-card">
+        <img src="logo.png" alt="Hylmar Retail Partners logo">
+
+        <h3>
+          <span data-lang="cs">Z produktu děláme obchodně připravenou nabídku.</span>
+          <span data-lang="en">We turn products into commercially ready offers.</span>
+        </h3>
+
+        <p>
+          <span data-lang="cs">Sortiment • Pricing • Maržový model • Obchodní argumentace • Příprava na jednání</span>
+          <span data-lang="en">Assortment • Pricing • Margin model • Commercial argumentation • Retail pitch</span>
+        </p>
+
+        <div class="pill-row">
+          <span class="pill">Retail</span>
+          <span class="pill">Distribution</span>
+          <span class="pill">E-commerce</span>
+          <span class="pill">Convenience</span>
+          <span class="pill">Pharmacy</span>
+        </div>
+      </aside>
     </div>
   </header>
 
   <section id="about">
     <div class="split">
-      <div>
+      <div class="panel orange-border">
         <h2 class="section-title">
           <span data-lang="cs">
-            <span>Praktický partner</span> pro obchodní vstup na trh.
+            <span>Praktický partner</span> pro vstup do retailu.
           </span>
           <span data-lang="en">
-            A <span>professional partner</span> for retail market entry.
+            A <span>practical partner</span> for retail market entry.
           </span>
         </h2>
 
-        <p class="section-intro">
+        <p>
           <span data-lang="cs">
-            Hylmar Retail Partners staví na více než 20 letech zkušeností v retailu,
-            nákupu, category managementu a obchodním leadershipu.
+            Stavíme na více než 20 letech zkušeností v retailu, nákupu, category managementu
+            a obchodním leadershipu. Pomáháme výrobcům a značkám připravit se na jednání
+            s obchodními partnery a zvýšit šanci na úspěšný vstup do distribuce.
           </span>
           <span data-lang="en">
-            Hylmar Retail Partners builds on more than 20 years of experience in retail,
-            buying, category management and commercial leadership.
+            We build on more than 20 years of experience in retail, buying, category management
+            and commercial leadership. We help producers and brands prepare for negotiations
+            with retail and distribution partners.
           </span>
         </p>
-
-        <div class="panel orange-border">
-          <p>
-            <span data-lang="cs">
-              Pomáháme malým a středním výrobcům, exportérům i zahraničním značkám připravit produkt,
-              cenu, sortiment, maržový model a obchodní argumentaci tak, aby dávaly smysl pro retailery,
-              distributory a lokální obchodní partnery.
-            </span>
-            <span data-lang="en">
-              We help brands, exporters, distributors and retail partners turn product potential
-              into a commercially clear offer for the Czech and Slovak markets.
-            </span>
-          </p>
-
-          <p>
-            <span data-lang="cs">
-              Zaměřujeme se na praktický výsledek: lepší připravenost na jednání,
-              srozumitelnou nabídku, přístup k partnerům a silnější šanci uspět v distribuci.
-            </span>
-            <span data-lang="en">
-              We focus on practical outcomes: market entry assessment, category and channel strategy,
-              pricing and margin setup, retail pitch preparation and business development support.
-            </span>
-          </p>
-        </div>
       </div>
 
-      <div class="visual-card">
-        <img src="banner-en.png" alt="Hylmar Retail Partners market entry banner">
+      <div class="panel">
+        <h2 class="section-title">
+          <span data-lang="cs">Co řešíme</span>
+          <span data-lang="en">What we solve</span>
+        </h2>
+
+        <div class="highlight-list">
+          <div class="highlight-item">
+            <span data-lang="cs">Jak produkt správně zařadit do sortimentu a kategorie.</span>
+            <span data-lang="en">How to position the product in the right category and assortment.</span>
+          </div>
+
+          <div class="highlight-item">
+            <span data-lang="cs">Jak nastavit cenu, marži a obchodní podmínky.</span>
+            <span data-lang="en">How to set pricing, margin logic and commercial terms.</span>
+          </div>
+
+          <div class="highlight-item">
+            <span data-lang="cs">Jak připravit argumentaci pro retailera nebo distributora.</span>
+            <span data-lang="en">How to prepare strong arguments for retailers and distributors.</span>
+          </div>
+
+          <div class="highlight-item">
+            <span data-lang="cs">Jak najít vhodnou cestu na český a slovenský trh.</span>
+            <span data-lang="en">How to find the right route to the Czech and Slovak markets.</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -663,8 +746,8 @@
 
     <p class="section-intro">
       <span data-lang="cs">
-        Pomáháme připravit produkt a obchodní nabídku tak, aby byla srozumitelná,
-        realistická a použitelná při jednání s retailery, distributory a partnery.
+        Pomáháme převést produkt do konkrétní obchodní nabídky: srozumitelné, realistické
+        a použitelné při jednání s retailery, distributory a dalšími partnery.
       </span>
       <span data-lang="en">
         We support brands with clear commercial preparation for entering retail,
@@ -678,39 +761,11 @@
         <div>
           <strong>
             <span data-lang="cs">Obchodní příprava</span>
-            <span data-lang="en">Market entry assessment</span>
+            <span data-lang="en">Commercial preparation</span>
           </strong>
           <p>
-            <span data-lang="cs">Posouzení produktu, sortimentu, cílového trhu a obchodní připravenosti.</span>
-            <span data-lang="en">Assessment of product potential, market fit and commercial readiness.</span>
-          </p>
-        </div>
-      </div>
-
-      <div class="service-item">
-        <div class="dot"></div>
-        <div>
-          <strong>
-            <span data-lang="cs">Kategorie a prodejní kanály</span>
-            <span data-lang="en">Category & channel strategy</span>
-          </strong>
-          <p>
-            <span data-lang="cs">Retail, distribuce, e-commerce, convenience, pharmacy a discount.</span>
-            <span data-lang="en">Retail, distribution, e-commerce, convenience, pharmacy and discount channels.</span>
-          </p>
-        </div>
-      </div>
-
-      <div class="service-item">
-        <div class="dot"></div>
-        <div>
-          <strong>
-            <span data-lang="cs">Pricing a maržový model</span>
-            <span data-lang="en">Pricing and margin setup</span>
-          </strong>
-          <p>
-            <span data-lang="cs">Nastavení ceny, marže a obchodních podmínek pro lokální trh.</span>
-            <span data-lang="en">Pricing, margin and commercial structure for the local market.</span>
+            <span data-lang="cs">Produkt, cena, marže, sortiment a argumentace pro obchodní jednání.</span>
+            <span data-lang="en">Product, pricing, margin, assortment and arguments for business negotiations.</span>
           </p>
         </div>
       </div>
@@ -720,11 +775,11 @@
         <div>
           <strong>
             <span data-lang="cs">Přístup na trh</span>
-            <span data-lang="en">Distributor and retail partner search</span>
+            <span data-lang="en">Market access</span>
           </strong>
           <p>
-            <span data-lang="cs">Vyhledání relevantních distributorů, retailerů a obchodních partnerů.</span>
-            <span data-lang="en">Identification of relevant distributors, retailers and business partners.</span>
+            <span data-lang="cs">Retail, distributoři, obchodní partneři a vhodná cesta k rozhodovacím kontaktům.</span>
+            <span data-lang="en">Retailers, distributors, business partners and the right route to decision makers.</span>
           </p>
         </div>
       </div>
@@ -733,12 +788,12 @@
         <div class="dot"></div>
         <div>
           <strong>
-            <span data-lang="cs">Příprava na jednání</span>
-            <span data-lang="en">Retail pitch preparation</span>
+            <span data-lang="cs">Praktická podpora</span>
+            <span data-lang="en">Practical support</span>
           </strong>
           <p>
-            <span data-lang="cs">Příprava prezentace, argumentace a struktury obchodního jednání.</span>
-            <span data-lang="en">Preparation of pitch, argumentation and negotiation structure.</span>
+            <span data-lang="cs">Příprava prezentace, obchodního příběhu a struktury jednání.</span>
+            <span data-lang="en">Preparation of pitch, commercial story and negotiation structure.</span>
           </p>
         </div>
       </div>
@@ -747,34 +802,37 @@
         <div class="dot"></div>
         <div>
           <strong>
-            <span data-lang="cs">Business development</span>
-            <span data-lang="en">Business development support</span>
+            <span data-lang="cs">Růst distribuce</span>
+            <span data-lang="en">Distribution growth</span>
           </strong>
           <p>
-            <span data-lang="cs">Podpora růstu distribuce a dlouhodobé spolupráce s partnery.</span>
-            <span data-lang="en">Support for distribution growth and long-term partnerships.</span>
+            <span data-lang="cs">Silnější nabídka pro obchod a podpora dlouhodobé spolupráce s partnery.</span>
+            <span data-lang="en">A stronger trade offer and support for long-term partner cooperation.</span>
           </p>
         </div>
       </div>
+    </div>
+
+    <div class="channels">
+      <div class="channel">Retail</div>
+      <div class="channel">Distribuce / Distribution</div>
+      <div class="channel">E-commerce</div>
+      <div class="channel">Convenience</div>
+      <div class="channel">Pharmacy</div>
+      <div class="channel">Discount</div>
     </div>
 
     <div class="quote">
       <p>
         <span data-lang="cs">
-          „Pomáháme převést dobrý produkt do nabídky, které rozumí retail, distributor i zákazník.“
+          „Pomáháme převést dobrý produkt do obchodně srozumitelné nabídky.“
         </span>
         <span data-lang="en">
-          “We connect with brands, exporters, distributors and retail partners interested in
-          <span>Czechia, Slovakia and Central Europe.</span>”
+          “We turn good products into commercially clear offers for retail and distribution.”
         </span>
       </p>
     </div>
   </section>
-
-  <div class="image-strip">
-    <img src="banner-cz.png" alt="Hylmar Retail Partners Czech presentation">
-    <img src="banner-en.png" alt="Hylmar Retail Partners English presentation">
-  </div>
 
   <section id="markets">
     <h2 class="section-title">
@@ -784,12 +842,12 @@
 
     <p class="section-intro">
       <span data-lang="cs">
-        Specializujeme se na Českou republiku, Slovensko a širší region střední Evropy.
-        Prakticky propojujeme značky s obchodní realitou lokálních trhů.
+        Zaměřujeme se na Česko, Slovensko a střední Evropu. Propojujeme lokální znalost trhu
+        s praktickou obchodní přípravou výrobků a značek.
       </span>
       <span data-lang="en">
-        We focus on Czechia, Slovakia and Central Europe, connecting brands with the commercial reality
-        of local retail and distribution channels.
+        We focus on Czechia, Slovakia and Central Europe, connecting local market expertise
+        with practical commercial preparation for brands and producers.
       </span>
     </p>
 
@@ -825,8 +883,8 @@
           <span data-lang="en">Commercial impact</span>
         </h3>
         <p>
-          <span data-lang="cs">Důraz na prodejnost, marži, argumentaci a dlouhodobou spolupráci.</span>
-          <span data-lang="en">Focus on sales potential, margin logic, arguments and long-term cooperation.</span>
+          <span data-lang="cs">Důraz na prodejnost, cenu, marži, argumentaci a dlouhodobou spolupráci.</span>
+          <span data-lang="en">Focus on sales potential, pricing, margin logic, arguments and long-term cooperation.</span>
         </p>
       </div>
     </div>
